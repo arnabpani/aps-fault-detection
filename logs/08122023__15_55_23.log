@@ -1,0 +1,6 @@
+[ 2023-08-12 15:55:26,615 ] 20 root - INFO - exporting data as pandas dataframe
+[ 2023-08-12 15:55:26,615 ] 18 root - INFO - Reading data from database: aps and collection: sensor
+[ 2023-08-12 15:55:26,619 ] 20 root - INFO - Found Columns: RangeIndex(start=0, stop=0, step=1)
+[ 2023-08-12 15:55:26,620 ] 24 root - INFO - row and columnns in df: (0, 0)
+[ 2023-08-12 15:55:26,620 ] 25 root - INFO - save data in feature store
+[ 2023-08-12 15:55:26,622 ] 35 root - INFO - split dataset into train and test set

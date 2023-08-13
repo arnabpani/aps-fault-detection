@@ -1,0 +1,18 @@
+[ 2023-08-12 19:43:08,609 ] 20 root - INFO - exporting data as pandas dataframe
+[ 2023-08-12 19:43:08,609 ] 18 root - INFO - Reading data from database: aps and collection: sensor
+[ 2023-08-12 19:43:17,662 ] 20 root - INFO - Found Columns: Index(['_id', 'class', 'aa_000', 'ab_000', 'ac_000', 'ad_000', 'ae_000',
+       'af_000', 'ag_000', 'ag_001',
+       ...
+       'ee_002', 'ee_003', 'ee_004', 'ee_005', 'ee_006', 'ee_007', 'ee_008',
+       'ee_009', 'ef_000', 'eg_000'],
+      dtype='object', length=172)
+[ 2023-08-12 19:43:17,663 ] 22 root - INFO - Dropping column: _id
+[ 2023-08-12 19:43:18,291 ] 24 root - INFO - row and columnns in df: (36188, 171)
+[ 2023-08-12 19:43:18,291 ] 25 root - INFO - save data in feature store
+[ 2023-08-12 19:43:25,876 ] 35 root - INFO - split dataset into train and test set
+[ 2023-08-12 19:43:26,733 ] 39 root - INFO - create dataset directory folder if not available
+[ 2023-08-12 19:43:26,733 ] 46 root - INFO - Save df to feature store folder
+[ 2023-08-12 19:43:31,079 ] 59 root - INFO - Data ingestion artifact: DataIngestionArtifact(feature_store_file_path='/config/workspace/artifact/08122023__19_43_08/data_ingestion/feature_store/sensor.csv', train_file_path='/config/workspace/artifact/08122023__19_43_08/data_ingestion/dataset/train.csv', test_file_path='/config/workspace/artifact/08122023__19_43_08/data_ingestion/dataset/test.csv')
+[ 2023-08-12 19:43:32,145 ] 20 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Data Validation <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[ 2023-08-12 19:43:32,145 ] 107 root - INFO - Reading base dataframe
+[ 2023-08-12 19:43:36,939 ] 110 root - INFO - Replace na value in base df
