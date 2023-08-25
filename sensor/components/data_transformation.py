@@ -30,12 +30,9 @@ class DataTransformation:
     @classmethod
     def get_data_transformer_object(cls)->Pipeline:
         try:
-            simple_imputer = SimpleImputer(stratergy='constant',fill_value=0)
+            simple_imputer = SimpleImputer(strategy='constant',fill_value=0)
             robust_scaler = RobustScaler()
-            pipeline = Pipeline(steps=[
-                ('Imputer',simple_imputer)
-                ('RobustScaler',robust_scaler)
-            ])
+            pipeline = Pipeline(steps=[('Imputer',simple_imputer),('RobustScaler',robust_scaler)])
             return pipeline
             
         except Exception as e:
@@ -59,7 +56,7 @@ class DataTransformation:
             target_feature_train_arr = label_encoder.transform(target_feature_train_df)
             target_feature_test_arr = label_encoder.transform(target_feature_test_df)
 
-            transformation_pipeline = DataTransforamtion.get_data_transformer_object()
+            transformation_pipeline = DataTransformation.get_data_transformer_object()
             transformation_pipeline.fit(input_feature_train_df)
 
             input_feature_train_arr = transformation_pipeline.transform(input_feature_train_df)
@@ -81,10 +78,10 @@ class DataTransformation:
             utils.save_numpy_array_data(file_path=self.data_transformation_config.transformed_train_path, array= train_arr)
             utils.save_numpy_array_data(file_path=self.data_transformation_config.transformed_test_path, array=test_arr)
 
-            utils.save_object(file_path=self.data_transformation_config.transform_object_path, obj=transformation_pipleine)
+            utils.save_object(file_path=self.data_transformation_config.transform_object_path, obj=transformation_pipeline)
             utils.save_object(file_path=self.data_transformation_config.target_encoder_path, obj=label_encoder) 
 
-            data_transforamtion_artifact = artifact_entity.DataTransformationArtifact(
+            data_transformation_artifact = artifact_entity.DataTransformationArtifact(
                 transform_object_path=self.data_transformation_config.transform_object_path,
                 transformed_train_path=self.data_transformation_config.transformed_train_path,
                 transformed_test_path=self.data_transformation_config.transformed_test_path,

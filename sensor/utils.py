@@ -4,6 +4,7 @@ from sensor.exception import SensorException
 from sensor.config import mongo_client
 import os,sys,yaml
 import dill
+import numpy as np
 
 def get_collection_as_dataframe(database_name:str, collection_name:str)->pd.DataFrame:
 
