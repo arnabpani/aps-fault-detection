@@ -1,7 +1,8 @@
-import os 
-from sensor.entity.config_entity import TRANSFORMER_OBJECT_FILE_NAME, MODEL_FILE_NAME,TARGET_ENCODER_OBJECT_FILE_NAME
+import os, sys
+from sensor.entity.config_entity import TRANSFORMER_OBJECT_FILENAME, MODEL_FILE_NAME,TARGET_ENCODER_OBJECT_FILE_NAME
 from glob import glob
 from typing import Optional
+from sensor.exception import SensorException
 
 class ModelResolver:
     def __init__(self,model_registry:str="saved_models",
@@ -18,11 +19,11 @@ class ModelResolver:
     def get_latest_dir_path(self):
         try:
             dir_name = os.listdir(self.model_registry)
-            if len(dir_names) == 0:
+            if len(dir_name) == 0:
                 return None
-            dir_names = list(map(int, dir_names))
-            latest_folder_name = max(dir_names)
-            return os.path.join(self.model_registry, f"{latest_dir_name}")
+            dir_name = list(map(int, dir_name))
+            latest_folder_name = max(dir_name)
+            return os.path.join(self.model_registry, f"{latest_folder_name}")
         except Exception as e:
             raise e
 
@@ -31,7 +32,7 @@ class ModelResolver:
             latest_dir = self.get_latest_dir_path()
             if latest_dir is None:
                 raise Exception(f"Model is not available")
-            return glob(os.path.join(latest_dir, self.model_dir_name, MODEL_FILE_NAME))
+            return os.path.join(latest_dir, self.model_dir_name, MODEL_FILE_NAME)
         except Exception as e:
             raise e
 
@@ -40,7 +41,7 @@ class ModelResolver:
             latest_dir = self.get_latest_dir_path()
             if latest_dir is None:
                 raise Exception(f"Transformer is not available")
-            return os.path.join(latest_dir,self.transformer_dir_name,TRANSFORMER_OBJECT_FILE_NAME)
+            return os.path.join(latest_dir,self.transformer_dir_name,TRANSFORMER_OBJECT_FILENAME)
         except Exception as e:
             raise e
 
@@ -62,3 +63,23 @@ class ModelResolver:
             return os.path.join(self.model_registry,f"{latest_dir_num+1}")
         except Exception as e:
             raise e
+    def get_latest_save_model_path(self):
+        try:
+            latest_dir = self.get_latest_save_dir_path()
+            return os.path.join(latest_dir,self.model_dir_name,MODEL_FILE_NAME)
+        except Exception as e:
+            raise SensorException(e, sys)
+
+    def get_latest_save_transformer_path(self):
+        try:
+            latest_dir = self.get_latest_save_dir_path()
+            return os.path.join(latest_dir,self.transformer_dir_name,TRANSFORMER_OBJECT_FILENAME)
+        except Exception as e:
+            raise SensorException(e, sys)
+
+    def get_latest_save_target_encoder_path(self):
+        try:
+            latest_dir = self.get_latest_save_dir_path()
+            return os.path.join(latest_dir,self.target_encoder_dir_name,TARGET_ENCODER_OBJECT_FILE_NAME)
+        except Exception as e:
+            raise SensorException(e, sys)

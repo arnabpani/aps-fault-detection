@@ -1,0 +1,4 @@
+[ 2023-09-02 22:15:30,303 ] 16 root - INFO - Reading file:/config/workspace/aps_failure_training_set1.csv
+[ 2023-09-02 22:15:34,434 ] 20 root - INFO - Loading transformer to transform dataset
+[ 2023-09-02 22:15:36,876 ] 26 root - INFO - Loading model to make prediction
+[ 2023-09-02 22:15:37,205 ] 30 root - INFO - Target encoder to convert predicted column into categorical

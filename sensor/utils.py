@@ -48,7 +48,7 @@ def convert_columns_float(df,exclude_columns:list):
     except Exception as e:
             raise SensorException(e, sys)
 
-def save_object(file_path:str,obj:object)->None:
+def save_object(file_path:str,obj:object) -> None:
     try:
         logging.info("Entered te save object method of Main utils class")
         os.makedirs(os.path.dirname(file_path), exist_ok=True)
@@ -58,7 +58,7 @@ def save_object(file_path:str,obj:object)->None:
     except Exception as e:
         raise SensorException(e, sys)
 
-def load_object(file_path:str,)->object:
+def load_object(file_path: str, ) -> object:
     try:
         if not os.path.exists(file_path):
             raise Exception(f"The file: {file_path} is not exists")
